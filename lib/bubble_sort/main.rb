@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 class Array
+  # 配列の前から順に要素を比較し大きい要素を都度後ろに移動していく
   def bubble_sort
-    # 配列の前から順に要素を比較し大きい要素を都度後ろに移動していく
     self.each_index.with_object(self) do |index, temp_array|
       # 最高でも（配列の要素数 - 1）回の繰り返しでソートが完了する
       break if index == temp_array.length - 1
