@@ -57,9 +57,3 @@ class Array
     flags.transpose[0]
   end
 end
-
-#array = [*1..9].shuffle
-#array = [7, 5, 6, 9, 1, 4, 2, 3, 8]
-
-#puts array.to_s + "  #=> 最初の配列"
-#puts array.quick_sort == [*1..9]
