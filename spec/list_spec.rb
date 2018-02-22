@@ -5,6 +5,38 @@ require "spec_helper"
 RSpec.describe List do
   let(:list) { List.new(1, 9, 8, 4) }
 
+  describe "#==" do
+    context "when argument is same as receiver" do
+      it "returns 'true'" do
+        expect(list == list).to be_truthy
+      end
+    end
+
+    context "when argument is different from receiver" do
+      it "returns 'false'" do
+        expect(list == [1, 9, 8, 4]).to be_falsey
+      end
+    end
+  end
+
+  describe "#[]" do
+    it "returns element's value designated as argument" do
+      expect(list[0]).to eq 1
+    end
+  end
+
+  describe "#[]=" do
+    it "replace element designated as first argument with second argument" do
+      list[2] = 0
+      expect(list).to eq List.new(1, 9, 0, 4)
+    end
+  end
+
+  describe "#each" do
+    it { expect { |b| list.each(&b) }.to yield_control.exactly(list.length) }
+    it { expect { |b| list.each(&b) }.to yield_successive_args(1, 9, 8, 4) }
+  end
+
   describe "#to_s" do
     it "returns string that presents data like array" do
       expect(list.to_s).to eq "[1, 9, 8, 4]"
@@ -58,7 +90,7 @@ RSpec.describe List do
 
   describe "#delete_at" do
     it "returns a element deleted" do
-      expect(list.delete_at(1)).to eq List.new(1, 8, 4)
+      expect(list.delete_at(1)).to eq 9
     end
 
     it "deletes a element from receiver" do
