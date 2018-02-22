@@ -48,9 +48,6 @@ class Array
       when right_index
         flags.swap!(left_index, pivot_index)
         flags[left_index][1] = true
-      else
-        puts "!!!!!!!!"
-        exit 0
       end
     end
 
